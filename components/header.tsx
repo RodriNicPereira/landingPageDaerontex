@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-
+import ButtonPresupuesto from "./button-presupuesto"
 
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_PRESUPUESTO
 
@@ -36,19 +36,25 @@ export default function Header() {
             <a href="#productos" className="text-white text-sm font-medium hover:text-white transition-colors">
               Productos
             </a>
-            <a href="#nosotros" className="text-white text-sm font-medium hover:text-white transition-colors">
+            <a href="#nosotros" className={`text-white text-sm font-medium hover:text-white transition-colors ${isScrolled ? "text-white" : "text-black"}`}>
               Nosotros
             </a>
-            <a href="#galeria" className="text-white text-sm font-medium hover:text-white transition-colors">
+            <a href="#galeria" className={`text-white text-sm font-medium hover:text-white transition-colors ${isScrolled ? "text-white" : "text-black"}`}>
               Galería
             </a>
             <Button
               variant="outline"
-              className={`border-foreground text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary bg-white ${isScrolled ? "bg-[#1E4594] text-white" : "bg-white text-black"}`}
-              onClick={() => window.open(`${whatsapp}`)}
+              className={`rounded h-12 px-5 py-2.5 overflow-hidden group bg-[#1E4594]-500 
+                            relative hover:bg-gradient-to-r hover:from-[#1E4594]-500 hover:to-[#0081CC] 
+                            text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#0081CC] transition-all 
+                            ease-out duration-300 
+                            ${isScrolled ? " ring-2 ring-[#62b236] text-[#396617] " : " ring-2 text-white"}`}
+              
+                            onClick={() => window.open(`${whatsapp}`)}
             >
               Solicitar Presupuesto
             </Button>
+          
           </nav>
         </div>
       </div>
